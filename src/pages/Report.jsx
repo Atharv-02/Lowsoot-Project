@@ -39,6 +39,7 @@ export function Report() {
           <h1 className="reportmainheader">
             <span className="introjs__4">Report</span>
           </h1>
+          <Reportend generatePDF={generatePDF} componentRef={componentRef} />
           <div className="reportmaincont">
             <div ref={componentRef} id="report__datacontainer">
               <Reportmainhead/>
@@ -50,9 +51,7 @@ export function Report() {
                 <Bsrtable5 reportdata={reportdata} />
                 <Bsrtable6 reportdata={reportdata} />
               </div>
-              <div className="reportmaincont__tables"></div>
             </div>
-            <Reportend generatePDF={generatePDF} componentRef={componentRef} />
           </div>
         </div>
         {/* enabledc && */}
