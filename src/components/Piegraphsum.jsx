@@ -23,6 +23,7 @@ export function Piegraphsumblock() {
                 data={datax}
                 cx='50%'
                 cy='50%'
+                isAnimationActive='1'
                 outerRadius={100}
                 fill='#8884d8'
                 dataKey='value'
