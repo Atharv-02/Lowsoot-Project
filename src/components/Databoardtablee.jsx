@@ -1,4 +1,4 @@
-import { border, borderRadius, color } from "@mui/system";
+
 import { useState } from "react";
 
 export function Databoardtablee() {
@@ -16,16 +16,10 @@ export function Databoardtablee() {
                 <span className="blank__letters">check</span>
               </th> */}
             <th className="databoardtable__theadth" scope="col">
-              date
+              Date
             </th>
             <th className="databoardtable__theadth" scope="col">
-              Energy
-            </th>
-            <th className="databoardtable__theadth" scope="col">
-              Type
-            </th>
-            <th className="databoardtable__theadth" scope="col">
-              Source
+              No of Unit
             </th>
             <th className="databoardtable__theadth" scope="col">
               Actions
@@ -38,10 +32,8 @@ export function Databoardtablee() {
               <tr key={idx} className="databoardtable__tabletr">
                 <td className="databoardtable__tabletd">25 Jun 2022</td>
                 <td className="databoardtable__tabletd">
-                  {item} kWh
+                  {item}
                 </td>
-                <td className="databoardtable__tabletd">Coal</td>
-                <td className="databoardtable__tabletd">-</td>
                 <td className="databoardtable__tabletd">coming soon</td>
               </tr>
             );
@@ -78,9 +70,10 @@ export function Databoardtablee() {
               backgroundColor: "#4d7cfe",
               }}
               onClick={() => {
-                setLo([...lo,energy])
-                setShowInput(false)
-
+                if(energy > -1 && energy !== ""){
+                  setLo([...lo,energy])
+                  setShowInput(false)
+                }
               }}
               >Add Row</button></div>
           ) : (
