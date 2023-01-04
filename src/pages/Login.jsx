@@ -11,8 +11,8 @@ import { useAuth } from "../contexts/Authcontext";
 
 export function Login() {
   const { isuserloggedin, setIsuserloggedin, setToken } = useAuth();
-  // const [usermail, setUsermail] = useState("");
-  // const [userpword, setUserpword] = useState("");
+  const [usermail, setUsermail] = useState("");
+  const [userpword, setUserpword] = useState("");
   const [loader, setLoader] = useState(false);
   const inputRef = useRef(null);
   const navigate = useNavigate();
@@ -23,52 +23,52 @@ export function Login() {
   const { register, handleSubmit, setFocus } = useForm({
     defaultValues: {},
   });
-  // async function handleLogin(params) {
-  //   try {
-  //     setLoader(true);
-  //     const { email, password } = params;
-  //     const response = await axios.post(`${baseurl}/login`, {
-  //       email,
-  //       password,
-  //     });
-  //     console.log(response);
-  //     console.log(response.status);
-  //     if (response.status === 200) {
-  //       const stringifieddata = JSON.stringify({
-  //         loginstatus: true,
-  //         clienttoken: response.data.token,
-  //       });
-  //       localStorage.setItem("login", stringifieddata);
-  //       setIsuserloggedin(true);
-  //       setToken(response.data.token);
-  //       navigate(from);
-  //       toast.success("login sucessfull", {
-  //         position: "top-right",
-  //         autoClose: 1998,
-  //         hideProgressBar: false,
-  //         closeOnClick: true,
-  //         pauseOnHover: true,
-  //         draggable: true,
-  //         progress: undefined,
-  //       });
-  //     }
-  //     setLoader(false);
-  //   } catch (error) {
-  //     setLoader(false);
-  //     console.log({ error });
-  //     toast.error("login failed", {
-  //       position: "top-right",
-  //       autoClose: 1998,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //     });
-  //   }
-  // }
+  async function handleLogin(params) {
+    try {
+      setLoader(true);
+      const { email, password } = params;
+      const response = await axios.post(`${baseurl}/login`, {
+        email,
+        password,
+      });
+      console.log(response);
+      console.log(response.status);
+      if (response.status === 200) {
+        const stringifieddata = JSON.stringify({
+          loginstatus: true,
+          clienttoken: response.data.token,
+        });
+        localStorage.setItem("login", stringifieddata);
+        setIsuserloggedin(true);
+        setToken(response.data.token);
+        navigate(from);
+        toast.success("login sucessfull", {
+          position: "top-right",
+          autoClose: 1998,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+      setLoader(false);
+    } catch (error) {
+      setLoader(false);
+      console.log({ error });
+      toast.error("login failed", {
+        position: "top-right",
+        autoClose: 1998,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
   const onSubmit = async (data) => {
-    // handleLogin(data);
+    handleLogin(data);
     try {
       setLoader(true);
       const response = await axios.post(`${baseurl}/login`, data);
@@ -149,32 +149,20 @@ export function Login() {
               className="brand__image"
               src="https://media-exp2.licdn.com/dms/image/C560BAQHmrQrq-ifvpQ/company-logo_200_200/0/1627669001150?e=1665619200&v=beta&t=8cWndk6bBeVRicz1to769LOAshKTp9Vv039pDBDA3So"
               alt=""
-            />
-          </div>
+            /> </div>
         </div>
         <section className="signup">
           <div className="signup__head">
             <h1 className="signup__header">Login</h1>
-            <p className="signup__message">
-              Dont have an account?&nbsp;
-              <Link className="link" to="/signup">
-                Sign up
-              </Link>
-            </p>
+            <p className="signup__message">Dont have an account?&nbsp; <Link className="link" to="/signup">Sign up</Link></p>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="signup__form">
             <div className="signup__formonsitelogin">
-              <input
-                ref={inputRef}
-                // onChange={(event) => setUsermail(event.target.value)}
-                {...register("email")}
-                placeholder="email"
-                className="signup__input"
-                type="email"
-                required={true}
-              />
-              <input
-                // onChange={(event) => setUserpword(event.target.value)}
+              <input ref={inputRef}
+                onChange={(event) => setUsermail(event.target.value)}
+                {...register("email")}  placeholder="email" className="signup__input" type="email" required={true} />
+              <input 
+                onChange={(event) => setUserpword(event.target.value)}
                 {...register("password")}
                 placeholder="password"
                 className="signup__input"
@@ -194,9 +182,9 @@ export function Login() {
                 </button>
               ) : (
                 <button
-                  // onClick={() =>
-                  //   handleLogin({ email: usermail, password: userpword })
-                  // }
+                  onClick={() =>
+                    handleLogin({ email: usermail, password: userpword })
+                  }
                   type="submit"
                   className="signup__button"
                 >
