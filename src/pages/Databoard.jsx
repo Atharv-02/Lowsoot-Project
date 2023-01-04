@@ -1,5 +1,4 @@
 import { Databoardcontols } from "../components/Databoardcontols";
-import { Databoardtable } from "../components/Databoardtable";
 import { Lowsootfooter } from "../components/Lowsootfooter";
 import { Databoardtablec } from "../components/Databoardtablec";
 import { Databoardtablee } from "../components/Databoardtablee";
@@ -10,10 +9,8 @@ import { Topbarv3 } from "../components/topbar/Topbarv3";
 import { Databoardtablef } from "../components/Databoardtablef";
 import { useParams } from "react-router-dom";
 import { Databoardtableco } from "../components/Databoardtableco";
-import { Databoardtables3f } from "../components/Databoardtables3f";
-import { Databoardtables3e } from "../components/Databoardtables3e";
-import { Databoardtablegp } from "../components/Databoardtablegp";
-import { Databoardtableref } from "../components/Databoardtableref";
+import { Databoardtablep } from "../components/Databoardtablep";
+import { Databoardtableb } from "../components/Databoardtableb";
 import { Databoardtabledel } from "../components/Databoardtabledel";
 export function Databoard() {
   const { name } = useParams();
@@ -45,12 +42,6 @@ export function Databoard() {
             </div>
             <div className="databoardtablecont">
               <div className="databoardtabletop">
-                {name === "travel" && (
-                  <div>
-                    <h2 className="databoardtabletop__header">Travel</h2>
-                    <p className="databoardtabletop__norows">6 results found</p>
-                  </div>
-                )}
                 {name === "electricity" && (
                   <div>
                     <h2 className="databoardtabletop__header">Electricity</h2>
@@ -75,25 +66,21 @@ export function Databoard() {
                     <p className="databoardtabletop__norows">6 results found</p>
                   </div>
                 )}
-                {name === "s3fuel" && (
+                {name === "Building" && (
                   <div>
-                    <h2 className="databoardtabletop__header">
-                      Fuel (Scope 3)
-                    </h2>
+                    <h2 className="databoardtabletop__header">Building</h2>
                     <p className="databoardtabletop__norows">6 results found</p>
                   </div>
                 )}
-                {name === "s3electricity" && (
+                {name === "delivery" && (
                   <div>
-                    <h2 className="databoardtabletop__header">
-                      Electricity (Scope 3)
-                    </h2>
+                    <h2 className="databoardtabletop__header">Delivery</h2>
                     <p className="databoardtabletop__norows">6 results found</p>
                   </div>
                 )}
-                {name === "gaspurchase" && (
+                {name === "product" && (
                   <div>
-                    <h2 className="databoardtabletop__header">Gas Purchase</h2>
+                    <h2 className="databoardtabletop__header">Product</h2>
                     <p className="databoardtabletop__norows">6 results found</p>
                   </div>
                 )}
@@ -103,16 +90,13 @@ export function Databoard() {
                 </div>
               </div>
               <div className="databoardtable">
-                {name === "travel" && <Databoardtable />}
                 {name === "cargo" && <Databoardtablec />}
                 {name === "electricity" && <Databoardtablee />}
                 {name === "fuel" && <Databoardtablef />}
                 {name === "commute" && <Databoardtableco />}
-                {name === "s3fuel" && <Databoardtables3f />}
-                {name === "s3electricity" && <Databoardtables3e />}
-                {name === "gaspurchase" && <Databoardtablegp />}
-                {name === "refrigeration" && <Databoardtableref />}
                 {name === "delivery" && <Databoardtabledel />}
+                {name === "Building" && <Databoardtableb />}
+                {name === "product" && <Databoardtablep />}
               </div>
             </div>
           </div>

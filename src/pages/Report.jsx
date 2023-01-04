@@ -41,7 +41,7 @@ export function Report() {
           </h1>
           <div className="reportmaincont">
             <div ref={componentRef} id="report__datacontainer">
-              <Reportmainhead />
+              <Reportmainhead/>
               <div className="bsrreports">
                 <Bsrtable1 reportdata={reportdata} />
                 <Bsrtable2 reportdata={reportdata} />
