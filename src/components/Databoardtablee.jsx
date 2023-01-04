@@ -1,5 +1,12 @@
+import { border, borderRadius, color } from "@mui/system";
+import { useState } from "react";
+
 export function Databoardtablee() {
-  const lo = [1, 2, 3, 4, 5, 6];
+
+  const [showInput, setShowInput] = useState(false);
+  const [energy, setEnergy] = useState("");
+  const [lo, setLo] = useState([1000, 2000, 3000, 4000, 5000, 6000]);
+
   return (
     <>
       <table className="databoardtable__table">
@@ -25,13 +32,13 @@ export function Databoardtablee() {
             </th>
           </tr>
         </thead>
-        <tbody className="databoardtable__tablebody">
+        <tbody className="databoardtable__tablebody"> 
           {[...lo].map((item, idx) => {
             return (
-              <tr key={item} className="databoardtable__tabletr">
+              <tr key={idx} className="databoardtable__tabletr">
                 <td className="databoardtable__tabletd">25 Jun 2022</td>
                 <td className="databoardtable__tabletd">
-                  {(idx + 1) * 1000} kWh
+                  {item} kWh
                 </td>
                 <td className="databoardtable__tabletd">Coal</td>
                 <td className="databoardtable__tabletd">-</td>
@@ -40,7 +47,54 @@ export function Databoardtablee() {
             );
           })}
         </tbody>
-      </table>
+        </table>
+        <div style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          padding:"8px",
+        }}>{
+          showInput ? (
+            <div style={{
+              fontSize: "14px"
+            }}> Enter No. of Units 
+              <input type={"number"} value={energy} style={{
+              padding:"8px",
+              margin: "0px 8px",
+              borderRadius: "4px",
+              height: "30px"
+              }} required={true} onChange = {(e) => {
+                const value = parseInt(e.target.value)  ;
+                if(value > -1){setEnergy(value)}
+                else if(e.target.value === ""){setEnergy("")}
+                
+              }}/> 
+            
+            <button id="addButton" style={{
+              padding:"8px",
+              borderRadius: "4px",
+              color: "white",
+              backgroundColor: "#4d7cfe",
+              }}
+              onClick={() => {
+                setLo([...lo,energy])
+                setShowInput(false)
+
+              }}
+              >Add Row</button></div>
+          ) : (
+            <button id="addButton" style={{
+            padding:"8px",
+            borderRadius: "4px",
+            color: "white",
+            backgroundColor: "#4d7cfe",
+            display: "hidden"
+            }}
+            onClick={() => setShowInput(true)}
+            >Add Row</button>)}
+        </div>
+        
     </>
   );
 }

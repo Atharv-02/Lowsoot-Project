@@ -1,4 +1,4 @@
-export function Databoardtables3e() {
+export function Databoardtablep() {
   const lo = [1, 2, 3, 4, 5, 6];
   return (
     <>
