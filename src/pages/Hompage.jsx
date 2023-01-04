@@ -9,7 +9,7 @@ import { chartarray } from '../sampledata/data';
 import { Areagraphblock } from '../components/summary/Areagraphblock';
 import { Scattergraphblock } from '../components/summary/Scattergraphblock';
 import { color1, color2, color3 } from '../color';
-import Piegraphsumblock from '../components/Piegraphsum';
+import {Piegraphsumblock} from '../components/Piegraphsum';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
