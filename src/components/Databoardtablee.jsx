@@ -1,4 +1,4 @@
-import { border, borderRadius, color } from "@mui/system";
+
 import { useState } from "react";
 
 export function Databoardtablee() {
@@ -29,16 +29,10 @@ export function Databoardtablee() {
                 <span className="blank__letters">check</span>
               </th> */}
             <th className="databoardtable__theadth" scope="col">
-              date
+              Date
             </th>
             <th className="databoardtable__theadth" scope="col">
-              Energy
-            </th>
-            <th className="databoardtable__theadth" scope="col">
-              Type
-            </th>
-            <th className="databoardtable__theadth" scope="col">
-              Source
+              No of Unit
             </th>
             <th className="databoardtable__theadth" scope="col">
               Actions
@@ -51,9 +45,9 @@ export function Databoardtablee() {
               <tr key={idx} className="databoardtable__tabletr">
                 <td className="databoardtable__tabletd">{item.date}</td>
                 <td className="databoardtable__tabletd">
-                  {item.energy} kWh
+                  {item} kWh
                 </td>
-                <td className="databoardtable__tabletd">{item.type}</td>
+                <td className="databoardtable__tabletd">Coal</td>
                 <td className="databoardtable__tabletd">-</td>
                 <td className="databoardtable__tabletd">coming soon</td>
               </tr>
@@ -110,31 +104,9 @@ export function Databoardtablee() {
               backgroundColor: "#4d7cfe",
               }}
               onClick={() => {
-                /*const change = document.querySelector(".databoardtable__tablebody")
-                change.innerHTML = change.innerHTML + `
-                <tr class="databoardtable__tabletr">
-                <td class="databoardtable__tabletd">25 Jun 2022</td>
-                <td class="databoardtable__tabletd">
-                ${energy} kWh
-                </td>
-                <td class="databoardtable__tabletd">Coal</td>
-                <td class="databoardtable__tabletd">-</td>
-                <td class="databoardtable__tabletd">coming soon</td>
-              </tr>
-                `*/
-                if(energy > -1 && energy !== "" && dates !== ""){
-                  const dateString = dates;
-                  const date = new Date(dateString);
-                  const options = {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  };
-                  
-                  const formattedDate = date.toLocaleDateString("en-US", options);
-                  setLo([...lo,{"date": formattedDate, "energy": energy}]);
-                  setShowInput(false)
-                }
+                setLo([...lo,energy])
+                setShowInput(false)
+
               }}
               >Add Row</button></div>
           ) : (
