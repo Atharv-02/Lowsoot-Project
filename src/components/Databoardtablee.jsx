@@ -1,11 +1,24 @@
-import { border, borderRadius, color } from "@mui/system";
+
 import { useState } from "react";
 
 export function Databoardtablee() {
 
   const [showInput, setShowInput] = useState(false);
   const [energy, setEnergy] = useState("");
-  const [lo, setLo] = useState([1000, 2000, 3000, 4000, 5000, 6000]);
+  const [dates, setDate] = useState('');
+
+  const handleChange = (event) => {
+    setDate(event.target.value);
+  };
+
+  const [lo, setLo] = useState([
+    {"date": "Jun 25, 2022", "energy": 1000},
+    {"date": "Jun 25, 2022", "energy": 1000},
+    {"date": "Jun 26, 2022", "energy": 2000},
+    {"date": "Jun 27, 2022", "energy": 3000},
+    {"date": "Jun 28, 2022", "energy": 4000},
+
+  ]);
 
   return (
     <>
@@ -16,16 +29,10 @@ export function Databoardtablee() {
                 <span className="blank__letters">check</span>
               </th> */}
             <th className="databoardtable__theadth" scope="col">
-              date
+              Date
             </th>
             <th className="databoardtable__theadth" scope="col">
-              Energy
-            </th>
-            <th className="databoardtable__theadth" scope="col">
-              Type
-            </th>
-            <th className="databoardtable__theadth" scope="col">
-              Source
+              No of Unit
             </th>
             <th className="databoardtable__theadth" scope="col">
               Actions
@@ -36,7 +43,7 @@ export function Databoardtablee() {
           {[...lo].map((item, idx) => {
             return (
               <tr key={idx} className="databoardtable__tabletr">
-                <td className="databoardtable__tabletd">25 Jun 2022</td>
+                <td className="databoardtable__tabletd">{item.date}</td>
                 <td className="databoardtable__tabletd">
                   {item} kWh
                 </td>
@@ -56,18 +63,37 @@ export function Databoardtablee() {
           padding:"8px",
         }}>{
           showInput ? (
-            <div style={{
-              fontSize: "14px"
-            }}> Enter No. of Units 
+            <div style={{fontSize: "14px"}}>
+              Enter Date
+              <input
+                type="date"
+                value={dates}
+                onChange={handleChange}
+                style={{
+                  appearance: 'none',
+                  border: 'solid 0.5px',
+                  borderRadius: '4px',
+                  boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.1)',
+                  padding: '8px',
+                  margin: '0px 8px 16px 8px',
+                }}
+              />
+              Enter No. of Units 
               <input type={"number"} value={energy} style={{
-              padding:"8px",
-              margin: "0px 8px",
-              borderRadius: "4px",
-              height: "30px"
+                appearance: 'none',
+                border: 'solid 0.5px',
+                padding:"8px",
+                margin: "0px 8px 16px 8px",
+                borderRadius: "4px",
+                height: "30px"
               }} required={true} onChange = {(e) => {
                 const value = parseInt(e.target.value)  ;
-                if(value > -1){setEnergy(value)}
-                else if(e.target.value === ""){setEnergy("")}
+                if(value > -1){
+                  setEnergy(value)
+                }
+                else if(e.target.value === ""){
+                  setEnergy("")
+                }
                 
               }}/> 
             
